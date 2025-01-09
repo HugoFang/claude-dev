@@ -1,13 +1,4 @@
-import {
-	AssistantMessageContent,
-	TextContent,
-	ToolUse,
-	ToolParamName,
-	toolParamNames,
-	toolUseNames,
-	ToolUseName,
-} from "."
-import { decode } from "he"
+import { AssistantMessageContent, TextContent, ToolUse, ToolParamName, toolParamNames, toolUseNames, ToolUseName } from "."
 
 export function parseAssistantMessage(assistantMessage: string) {
 	let contentBlocks: AssistantMessageContent[] = []
@@ -29,7 +20,7 @@ export function parseAssistantMessage(assistantMessage: string) {
 			const paramClosingTag = `</${currentParamName}>`
 			if (currentParamValue.endsWith(paramClosingTag)) {
 				// end of param value
-				currentToolUse.params[currentParamName] = decode(currentParamValue.slice(0, -paramClosingTag.length).trim())
+				currentToolUse.params[currentParamName] = currentParamValue.slice(0, -paramClosingTag.length).trim()
 				currentParamName = undefined
 				continue
 			} else {
@@ -71,9 +62,7 @@ export function parseAssistantMessage(assistantMessage: string) {
 					const contentStartIndex = toolContent.indexOf(contentStartTag) + contentStartTag.length
 					const contentEndIndex = toolContent.lastIndexOf(contentEndTag)
 					if (contentStartIndex !== -1 && contentEndIndex !== -1 && contentEndIndex > contentStartIndex) {
-						currentToolUse.params[contentParamName] = toolContent
-							.slice(contentStartIndex, contentEndIndex)
-							.trim()
+						currentToolUse.params[contentParamName] = toolContent.slice(contentStartIndex, contentEndIndex).trim()
 					}
 				}
 

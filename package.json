@@ -2,7 +2,7 @@
 	"name": "claude-dev",
 	"displayName": "Cline (prev. Claude Dev)",
 	"description": "Autonomous coding agent right in your IDE, capable of creating/editing files, running commands, using the browser, and more with your permission every step of the way.",
-	"version": "3.0.9",
+	"version": "3.1.3",
 	"icon": "assets/icons/icon.png",
 	"galleryBanner": {
 		"color": "#617A91",
@@ -124,43 +124,6 @@
 					"when": "view == claude-dev.SidebarProvider"
 				}
 			]
-		},
-		"configuration": {
-			"title": "Cline",
-			"properties": {
-				"cline.contextExclude": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					},
-					"default": [
-						"**/node_modules/**",
-						"**/__pycache__/**",
-						"**/env/**",
-						"**/venv/**",
-						"**/target/dependency/**",
-						"**/build/dependencies/**",
-						"**/dist/**",
-						"**/out/**",
-						"**/bundle/**",
-						"**/vendor/**",
-						"**/tmp/**",
-						"**/temp/**",
-						"**/deps/**",
-						"**/pkg/**",
-						"**/Pods/**",
-						"**/.*"
-					],
-					"description": "Configure paths or glob patterns to exclude in addition to the root .gitignore.  Patterns excluded by file.watcherExclude are also ignored."
-				},
-				"cline.maximumContextFiles": {
-					"type": "integer",
-					"minimum": 1000,
-					"maximum": 100000,
-					"default": 1000,
-					"description": "Maximum number of context files tracked. Adjust to control memory and performance."
-				}
-			}
 		}
 	},
 	"scripts": {
@@ -186,7 +149,6 @@
 	},
 	"devDependencies": {
 		"@types/diff": "^5.2.1",
-		"@types/micromatch": "^4.0.9",
 		"@types/mocha": "^10.0.7",
 		"@types/node": "20.x",
 		"@types/should": "^11.2.0",
@@ -209,7 +171,7 @@
 		"@google/generative-ai": "^0.18.0",
 		"@modelcontextprotocol/sdk": "^1.0.1",
 		"@types/clone-deep": "^4.0.4",
-		"@types/he": "^1.2.3",
+		"@types/get-folder-size": "^3.0.4",
 		"@types/pdf-parse": "^1.1.4",
 		"@types/turndown": "^5.0.5",
 		"@vscode/codicons": "^0.0.36",
@@ -222,11 +184,10 @@
 		"diff": "^5.2.0",
 		"execa": "^9.5.2",
 		"fast-deep-equal": "^3.1.3",
+		"get-folder-size": "^5.0.0",
 		"globby": "^14.0.2",
-		"he": "^1.2.0",
 		"isbinaryfile": "^5.0.2",
 		"mammoth": "^1.8.0",
-		"micromatch": "^4.0.8",
 		"monaco-vscode-textmate-theme-converter": "^0.1.7",
 		"openai": "^4.61.0",
 		"os-name": "^6.0.0",
@@ -235,6 +196,7 @@
 		"puppeteer-chromium-resolver": "^23.0.0",
 		"puppeteer-core": "^23.4.0",
 		"serialize-error": "^11.0.3",
+		"simple-git": "^3.27.0",
 		"strip-ansi": "^7.1.0",
 		"tree-sitter-wasms": "^0.1.11",
 		"turndown": "^7.2.0",
